@@ -1,15 +1,17 @@
 import { RestClient } from '@utils/restClient';
 
 import type { IdentificationTypeGet, IdentificationTypeResponse } from './types';
+import type { Options } from '@src/types';
 
-export default function list({ config }: IdentificationTypeGet): Promise<IdentificationTypeResponse[]> {
+export default function list({ config, requestOptions }: IdentificationTypeGet): Promise<IdentificationTypeResponse[]> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<IdentificationTypeResponse[]>(
 		'/v1/identification_types',
 		{
 			headers: {
 				'Authorization': `Bearer ${config.accessToken}`
 			},
-			...config.options
+			...options
 		}
 	);
 }

@@ -1,7 +1,9 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 export declare type IdentificationTypeGet = {
   config: MercadoPagoConfig;
+  requestOptions: Options;
 };
 
 export declare type IdentificationTypeResponse = {
