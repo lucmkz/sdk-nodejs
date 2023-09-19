@@ -1,8 +1,10 @@
 import { RestClient } from '@utils/restClient';
 import type { CustomerCardResponse } from '../commonTypes';
 import type { CustomerCardConfigUpdate } from './types';
+import type { Options } from '@src/types';
 
-export default function update({ customerId, cardId, body, config }: CustomerCardConfigUpdate): Promise<CustomerCardResponse> {
+export default function update({ customerId, cardId, body, config, requestOptions }: CustomerCardConfigUpdate): Promise<CustomerCardResponse> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<CustomerCardResponse>(
 		`/v1/customers/${customerId}/cards/${cardId}`,
 		{
@@ -11,7 +13,7 @@ export default function update({ customerId, cardId, body, config }: CustomerCar
 			},
 			body: JSON.stringify(body),
 			method: 'PUT',
-			...config.options
+			...options
 		}
 	);
 }
