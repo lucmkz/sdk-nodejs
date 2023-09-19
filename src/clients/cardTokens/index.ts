@@ -4,6 +4,7 @@ import create from './create';
 import type { CardTokenId, CardTokenResponse } from './get/types';
 import type { CardTokenBody } from './create/types';
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 /**
  * Mercado Pago CardTokens.
@@ -22,8 +23,8 @@ export class CardToken {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/examples/src/cardtoken/get/get.ts Usage Example  }.
    */
-	get({ cardTokenId }: CardTokenId): Promise<CardTokenResponse> {
-		return get({ id: cardTokenId, config: this.config });
+	get({ cardTokenId }: CardTokenId, requestOptions?: Options ): Promise<CardTokenResponse> {
+		return get({ id: cardTokenId, config: this.config, requestOptions });
 	}
 
 	/**
@@ -31,7 +32,7 @@ export class CardToken {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/examples/src/cardtoken/create.ts Usage Example  }.
    */
-	create ({ cardTokenBody }: CardTokenBody): Promise<CardTokenResponse> {
-		return create({ body: cardTokenBody, config: this.config });
+	create ({ cardTokenBody }: CardTokenBody, requestOptions?: Options): Promise<CardTokenResponse> {
+		return create({ body: cardTokenBody, config: this.config, requestOptions });
 	}
 }

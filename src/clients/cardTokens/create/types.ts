@@ -1,8 +1,10 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import { Options } from '@src/types';
 
 export declare type CardTokenCreate = {
   body: CardTokenRequest;
   config: MercadoPagoConfig;
+  requestOptions: Options;
 };
 
 export declare type CardTokenRequest = {
