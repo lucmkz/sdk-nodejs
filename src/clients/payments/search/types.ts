@@ -1,7 +1,9 @@
 import type { Identification } from '@src/clients/commonTypes';
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 export declare type Search = {
+  requestOptions: Options,
   filters?: PaymentsSearchOptions,
   config: MercadoPagoConfig
 };

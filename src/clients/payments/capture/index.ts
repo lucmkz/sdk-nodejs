@@ -2,8 +2,10 @@ import { RestClient } from '@utils/restClient';
 
 import type { PaymentsResponse } from '../commonTypes';
 import type { PaymentCaptureRequest } from './types';
+import type { Options } from '@src/types';
 
-export default function capture({ id, transaction_amount, config }: PaymentCaptureRequest): Promise<PaymentsResponse>  {
+export default function capture({ id, transaction_amount, config, requestOptions }: PaymentCaptureRequest): Promise<PaymentsResponse>  {
+	const options: Options = Object.assign(config.options, requestOptions);
 	const captureBody = {
 		capture: true,
 		transaction_amount
@@ -18,7 +20,7 @@ export default function capture({ id, transaction_amount, config }: PaymentCaptu
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(captureBody),
-			...config.options
+			...options
 		}
 	);
 }

@@ -1,7 +1,9 @@
 import { RestClient } from '@src/utils/restClient';
 import type { PaymentsSearch, Search } from './types';
+import type { Options } from '@src/types';
 
-export default function search({ filters, config }: Search): Promise<PaymentsSearch> {
+export default function search({ filters, config, requestOptions }: Search): Promise<PaymentsSearch> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<PaymentsSearch>(
 		'/v1/payments/search',
 		{
@@ -11,7 +13,7 @@ export default function search({ filters, config }: Search): Promise<PaymentsSea
 			queryParams: {
 				...filters
 			},
-			...config.options
+			...options
 		}
 	);
 }

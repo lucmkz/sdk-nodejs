@@ -1,4 +1,5 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 export declare type PaymentCaptureRequestBody = {
   id: string;
@@ -7,4 +8,5 @@ export declare type PaymentCaptureRequestBody = {
 
 export declare interface PaymentCaptureRequest extends PaymentCaptureRequestBody {
   config: MercadoPagoConfig;
+  requestOptions: Options
 }
