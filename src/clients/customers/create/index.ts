@@ -1,8 +1,10 @@
 import { RestClient } from '@utils/restClient';
 import type { CustomerCreateRequest } from './types';
 import type { Customer } from '../commonTypes';
+import type { Options } from '@src/types';
 
-export default function create({ body, config }: CustomerCreateRequest): Promise<Customer> {
+export default function create({ body, config, requestOptions }: CustomerCreateRequest): Promise<Customer> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<Customer>(
 		'/v1/customers',
 		{
@@ -11,7 +13,7 @@ export default function create({ body, config }: CustomerCreateRequest): Promise
 			},
 			body: JSON.stringify(body),
 			method: 'POST',
-			...config.options
+			...options
 		}
 	);
 }

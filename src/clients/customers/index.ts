@@ -14,6 +14,7 @@ import type { CustomerCardCreate } from '../customerCards/create/types';
 import type { CustomerCardResponse } from '../customerCards/commonTypes';
 import type { CustomerCardIds } from '../customerCards/get/types';
 import type { CustomerCardId } from '../customerCards/list/types';
+import type { Options } from '@src/types';
 
 /**
  * Mercado Pago Customer.
@@ -34,8 +35,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/create/create.ts Usage Example  }.
 	 */
-	create ({ body }: CustomerCreate): Promise<CustomerObj> {
-		return create({ body, config: this.config });
+	create ({ body }: CustomerCreate, requestOptions?: Options): Promise<CustomerObj> {
+		return create({ body, config: this.config, requestOptions });
 	}
 
 	/**
@@ -43,8 +44,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/get/get.ts Usage Example  }.
 	 */
-	get(customerId: string): Promise<CustomerObj> {
-		return get({ customerId, config: this.config });
+	get(customerId: string, requestOptions?: Options ): Promise<CustomerObj> {
+		return get({ customerId, config: this.config, requestOptions });
 	}
 
 	/**
@@ -52,8 +53,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/remove/remove.ts Usage Example  }.
 	 */
-	remove(customerId: string): Promise<CustomerObj> {
-		return remove({ customerId, config: this.config });
+	remove(customerId: string, requestOptions?: Options ): Promise<CustomerObj> {
+		return remove({ customerId, config: this.config, requestOptions });
 	}
 
 	/**
@@ -61,8 +62,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/update/update.ts Usage Example  }.
 	 */
-	update({ customerId, body }: CustomerUpdate): Promise<CustomerObj> {
-		return update({ customerId: customerId, body, config: this.config });
+	update({ customerId, body }: CustomerUpdate, requestOptions?: Options ): Promise<CustomerObj> {
+		return update({ customerId: customerId, body, config: this.config, requestOptions });
 	}
 
 	/**
@@ -70,8 +71,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/search/search.ts Usage Example  }.
 	 */
-	search(filters?: CustomerSearchOptions): Promise<CustomerSearchResultsPage> {
-		return search({ filters, config: this.config });
+	search(filters?: CustomerSearchOptions, requestOptions?: Options ): Promise<CustomerSearchResultsPage> {
+		return search({ filters, config: this.config, requestOptions });
 	}
 
 	/**
@@ -79,8 +80,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/createcard/createcard.ts Usage Example  }.
 	 */
-	createCard({ customerId, customerCardBody }: CustomerCardCreate): Promise<CustomerCardResponse> {
-		return this.customerCard.create({ customerId, customerCardBody });
+	createCard({ customerId, customerCardBody }: CustomerCardCreate, requestOptions?: Options ): Promise<CustomerCardResponse> {
+		return this.customerCard.create({ customerId, customerCardBody }, requestOptions);
 	}
 
 	/**
@@ -88,8 +89,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/getcard/getcard.ts Usage Example  }.
 	 */
-	getCard({ customerId, cardId }: CustomerCardIds): Promise<CustomerCardResponse> {
-		return this.customerCard.get({ customerId, cardId });
+	getCard({ customerId, cardId }: CustomerCardIds, requestOptions?: Options ): Promise<CustomerCardResponse> {
+		return this.customerCard.get({ customerId, cardId }, requestOptions);
 	}
 
 	/**
@@ -97,8 +98,8 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/removecard/removecard.ts Usage Example  }.
 	 */
-	removeCard({ customerId, cardId }: CustomerCardIds): Promise<CustomerCardResponse> {
-		return this.customerCard.remove({ customerId, cardId: cardId });
+	removeCard({ customerId, cardId }: CustomerCardIds, requestOptions?: Options ): Promise<CustomerCardResponse> {
+		return this.customerCard.remove({ customerId, cardId: cardId }, requestOptions);
 	}
 
 	/**
@@ -106,7 +107,7 @@ export class Customer {
 	 *
 	 * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/customer/listcards/listcards.ts Usage Example  }.
 	 */
-	listCards({ customerId }: CustomerCardId): Promise<CustomerCardResponse[]> {
-		return this.customerCard.list({ customerId });
+	listCards({ customerId }: CustomerCardId, requestOptions?: Options ): Promise<CustomerCardResponse[]> {
+		return this.customerCard.list({ customerId }, requestOptions);
 	}
 }
