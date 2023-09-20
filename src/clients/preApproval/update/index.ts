@@ -1,7 +1,11 @@
 import { RestClient } from '@utils/restClient';
-import type { UpdatePreApproval, PreApprovalUpdateResponse } from './types';
+import { mergeOptions } from '@src/utils/mergeOptions';
 
-export default function update({ id, body, config }: UpdatePreApproval): Promise<PreApprovalUpdateResponse> {
+import type { UpdatePreApproval, PreApprovalUpdateResponse } from './types';
+import type { Options } from '@src/types';
+
+export default function update({ id, body, config, requestOptions }: UpdatePreApproval): Promise<PreApprovalUpdateResponse> {
+	const options: Options = mergeOptions(config.options, requestOptions);
 	return RestClient.fetch<PreApprovalUpdateResponse>(
 		`/preapproval/${id}`,
 		{
@@ -11,7 +15,7 @@ export default function update({ id, body, config }: UpdatePreApproval): Promise
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body),
-			...config.options
+			...options
 		}
 	);
 }

@@ -1,7 +1,11 @@
 import { RestClient } from '@utils/restClient';
-import type { Search, PreApprovalSearchResponse } from './types';
+import { mergeOptions } from '@src/utils/mergeOptions';
 
-export default function search({ filters, config }: Search): Promise<PreApprovalSearchResponse> {
+import type { Search, PreApprovalSearchResponse } from './types';
+import type { Options } from '@src/types';
+
+export default function search({ filters, config, requestOptions }: Search): Promise<PreApprovalSearchResponse> {
+	const options: Options = mergeOptions(config.options, requestOptions);
 	return RestClient.fetch<PreApprovalSearchResponse>(
 		'/preapproval/search',
 		{
@@ -12,7 +16,7 @@ export default function search({ filters, config }: Search): Promise<PreApproval
 			queryParams: {
 				...filters
 			},
-			...config.options
+			...options
 		}
 	);
 }
