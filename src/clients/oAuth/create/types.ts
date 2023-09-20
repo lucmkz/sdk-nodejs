@@ -1,8 +1,10 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 export declare type CreateOAuthRequest = {
   oauthRequest: OAuthRequest;
   config: MercadoPagoConfig;
+  requestOptions?: Options;
 }
 
 export declare type OAuthRequest = {
