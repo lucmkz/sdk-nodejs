@@ -1,12 +1,10 @@
 import { RestClient } from '@src/utils/restClient';
 import { CreatePaymentIntent } from './types';
 import { PaymentIntentResponse } from '../commonTypes';
+import type { Options } from '@src/types';
 
-export default function createPaymentIntent({
-	device_id,
-	request,
-	config,
-}: CreatePaymentIntent): Promise<PaymentIntentResponse> {
+export default function createPaymentIntent({ device_id, request, config, requestOptions }: CreatePaymentIntent): Promise<PaymentIntentResponse> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<PaymentIntentResponse>(
 		`/point/integration-api/devices/${device_id}/payment-intents`,
 		{
@@ -15,7 +13,7 @@ export default function createPaymentIntent({
 				Authorization: `Bearer ${config.accessToken}`,
 			},
 			body: JSON.stringify(request),
-			...config.options,
+			...options,
 		}
 	);
 }

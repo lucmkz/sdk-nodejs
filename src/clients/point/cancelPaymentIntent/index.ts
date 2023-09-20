@@ -1,12 +1,10 @@
 import { RestClient } from '@src/utils/restClient';
 import { CancelPaymentIntentResponse } from '../commonTypes';
 import { CancelPaymentIntent } from './types';
+import type { Options } from '@src/types';
 
-export default function cancelPaymentIntent({
-	device_id,
-	payment_intent_id,
-	config,
-}: CancelPaymentIntent): Promise<CancelPaymentIntentResponse> {
+export default function cancelPaymentIntent({ device_id, payment_intent_id, config, requestOptions }: CancelPaymentIntent): Promise<CancelPaymentIntentResponse> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<CancelPaymentIntentResponse>(
 		`/point/integration-api/devices/${device_id}/payment-intents/${payment_intent_id}`,
 		{
@@ -14,7 +12,7 @@ export default function cancelPaymentIntent({
 			headers: {
 				Authorization: `Bearer ${config.accessToken}`,
 			},
-			...config.options,
+			...options,
 		}
 	);
 }

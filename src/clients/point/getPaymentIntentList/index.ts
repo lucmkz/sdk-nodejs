@@ -1,11 +1,10 @@
 import { RestClient } from '@src/utils/restClient';
 import { GetPaymentIntentListResponse } from '../commonTypes';
 import { Search } from './types';
+import type { Options } from '@src/types';
 
-export default function getPaymentIntentList({
-	filters,
-	config,
-}: Search): Promise<GetPaymentIntentListResponse> {
+export default function getPaymentIntentList({ filters, config, requestOptions }: Search): Promise<GetPaymentIntentListResponse> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<GetPaymentIntentListResponse>(
 		'/point/integration-api/payment-intents/events',
 		{
@@ -17,7 +16,7 @@ export default function getPaymentIntentList({
 			queryParams: {
 				...filters,
 			},
-			...config.options,
+			...options,
 		}
 	);
 }
