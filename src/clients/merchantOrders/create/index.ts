@@ -1,8 +1,12 @@
 import { RestClient } from '@utils/restClient';
+import { mergeOptions } from '@src/utils/mergeOptions';
+
 import type { MerchantOrderCreateRequest } from './types';
 import type { MerchantOrder } from '../commonTypes';
+import type { Options } from '@src/types';
 
-export default function create({ body, config }: MerchantOrderCreateRequest): Promise<MerchantOrder> {
+export default function create({ body, config, requestOptions }: MerchantOrderCreateRequest): Promise<MerchantOrder> {
+	const options: Options = mergeOptions(config.options, requestOptions);
 	return RestClient.fetch<MerchantOrder>(
 		'/merchant_orders',
 		{
@@ -11,7 +15,7 @@ export default function create({ body, config }: MerchantOrderCreateRequest): Pr
 			},
 			body: JSON.stringify(body),
 			method: 'POST',
-			...config.options
+			...options
 		}
 	);
 }

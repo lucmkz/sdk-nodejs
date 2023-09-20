@@ -1,15 +1,17 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
 import type { MerchantOrderItemRequest, MerchantOrderPayerRequest } from '../commonTypes';
+import type { Options } from '@src/types';
 
 export declare type MerchantOrderUpdateRequest = {
   merchantOrderId: string;
   config: MercadoPagoConfig;
+  requestOptions?: Options;
   body: MerchantOrderUpdateBody;
 }
 
 export declare type MerchantOrderUpdate = {
   merchantOrderId: string;
-  body: MerchantOrderUpdateBody; 
+  body: MerchantOrderUpdateBody;
 }
 
 export declare type MerchantOrderUpdateBody = {
