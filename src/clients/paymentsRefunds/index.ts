@@ -7,6 +7,7 @@ import type { CreateRefund } from './create/types';
 import type { GetRefund } from './get/types';
 import type { GetRefundList } from './list/types';
 import type { RefundResponse } from './commonTypes';
+import type { Options } from '@src/types';
 
 /**
  * Mercado Pago Refund.
@@ -25,8 +26,8 @@ export class PaymentsRefunds {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/paymentRefunds/get/get.ts Usage Example  }.
    */
-	get({ payment_id, refund_id }: GetRefund): Promise<RefundResponse> {
-		return get({ payment_id, refund_id, config: this.config });
+	get({ payment_id, refund_id }: GetRefund, requestOptions?: Options): Promise<RefundResponse> {
+		return get({ payment_id, refund_id, config: this.config, requestOptions });
 	}
 
 	/**
@@ -34,8 +35,8 @@ export class PaymentsRefunds {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/paymentRefunds/create/create.ts Usage Example  }.
    */
-	create({ payment_id, body }: CreateRefund): Promise<RefundResponse> {
-		return create({ payment_id, body, config: this.config });
+	create({ payment_id, body }: CreateRefund, requestOptions?: Options): Promise<RefundResponse> {
+		return create({ payment_id, body, config: this.config, requestOptions });
 	}
 
 	/**
@@ -43,8 +44,8 @@ export class PaymentsRefunds {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/paymentRefunds/list/list.ts Usage Example  }.
    */
-	list({ payment_id }: GetRefundList): Promise<Array<RefundResponse>> {
-		return list({ payment_id, config: this.config });
+	list({ payment_id }: GetRefundList, requestOptions?: Options): Promise<Array<RefundResponse>> {
+		return list({ payment_id, config: this.config, requestOptions });
 	}
 
 }

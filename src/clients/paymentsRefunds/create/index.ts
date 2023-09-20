@@ -1,8 +1,10 @@
 import { RestClient } from '@utils/restClient';
 import type { CreateRefundRequest } from './types';
 import type { RefundResponse } from '../commonTypes';
+import type { Options } from '@src/types';
 
-export default function create({ payment_id, body, config }: CreateRefundRequest): Promise<RefundResponse> {
+export default function create({ payment_id, body, config, requestOptions }: CreateRefundRequest): Promise<RefundResponse> {
+	const options: Options = Object.assign(config.options, requestOptions);
 	return RestClient.fetch<RefundResponse>(
 		`/v1/payments/${payment_id}/refunds`,
 		{
@@ -12,7 +14,7 @@ export default function create({ payment_id, body, config }: CreateRefundRequest
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body),
-			...config.options
+			...options
 		}
 	);
 }
