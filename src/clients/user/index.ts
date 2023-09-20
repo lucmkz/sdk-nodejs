@@ -2,6 +2,7 @@ import get from './get';
 
 import type { UserResponse } from './get/types';
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
+import type { Options } from '@src/types';
 
 /**
  * Mercado Pago User.
@@ -20,7 +21,7 @@ export class User {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/examples/src/user/get/get.ts Usage Example  }.
    */
-	get(): Promise<UserResponse[]> {
-		return get({ config: this.config });
+	get(requestOptions?: Options): Promise<UserResponse[]> {
+		return get({ config: this.config, requestOptions });
 	}
 }
