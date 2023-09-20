@@ -1,9 +1,11 @@
 import type { MercadoPagoConfig } from '@src/mercadoPagoConfig';
 import type { PreApprovalPlanResponse } from '../commonTypes';
+import type { Options } from '@src/types';
 
 export declare type Search = {
-  filters?: PreApprovalPlanSearchOptions,
-  config: MercadoPagoConfig
+  filters?: PreApprovalPlanSearchOptions;
+  config: MercadoPagoConfig;
+  requestOptions: Options;
 };
 
 export declare type PreApprovalPlanSearchOptions = {
