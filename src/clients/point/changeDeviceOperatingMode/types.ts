@@ -5,7 +5,7 @@ export declare type ChangeDeviceOperatingMode = {
   device_id: string;
   request: OperatingMode;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type ChangeDeviceOperatingModeRequest = {

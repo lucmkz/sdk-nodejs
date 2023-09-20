@@ -20,8 +20,8 @@ describe('Testing devices, get', () => {
 			Authorization: 'Bearer token',
 			'Content-Type': 'application/json',
 		};
-
-		await getDevices({ filters, config: client });
+		const requestOptions = {};
+		await getDevices({ filters, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			'/point/integration-api/devices',

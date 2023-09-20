@@ -9,5 +9,5 @@ export declare type CustomerCreate = {
 export declare type CustomerCreateRequest = {
   body: CustomerRequestBody;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };

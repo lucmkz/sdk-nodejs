@@ -10,7 +10,7 @@ export declare type UpdatePreference = {
   id: string;
   updatePreferenceRequest: PreferenceRequest;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type UpdatePreferenceRequest = {

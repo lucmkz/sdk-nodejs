@@ -11,7 +11,7 @@ export declare type CreateRefundBody = {
 };
 
 export declare type CreateRefundRequest = {
-  requestOptions: Options;
+  requestOptions?: Options;
   payment_id: string;
   body?: CreateRefundBody;
   config: MercadoPagoConfig

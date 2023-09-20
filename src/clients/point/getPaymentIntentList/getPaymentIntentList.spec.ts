@@ -11,12 +11,14 @@ describe('Testing payment intent, list', () => {
 			accessToken: 'token',
 			options: { timeout: 5000 },
 		});
+		const requestOptions = {};
 		const search: Search = {
 			filters: {
 				startDate: '2023-01-01',
 				endDate: '2023-12-31',
 			},
 			config: client,
+			requestOptions
 		};
 		const expectedHeaders = {
 			Authorization: 'Bearer token',

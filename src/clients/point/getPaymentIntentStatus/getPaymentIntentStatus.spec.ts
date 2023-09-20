@@ -15,8 +15,8 @@ describe('Testing payment intent, status', () => {
 		const expectedHeaders = {
 			Authorization: 'Bearer token',
 		};
-
-		await getPaymentIntentStatus({ payment_intent_id, config: client });
+		const requestOptions = {};
+		await getPaymentIntentStatus({ payment_intent_id, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			'/point/integration-api/payment-intents/123456789/events',

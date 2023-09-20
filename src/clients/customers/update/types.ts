@@ -11,5 +11,5 @@ export declare type CustomerUpdateRequest = {
   customerId: string;
   body: CustomerRequestBody;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };

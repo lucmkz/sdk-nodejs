@@ -4,7 +4,7 @@ import { Options } from '@src/types';
 export declare type CardTokenCreate = {
   body: CardTokenRequest;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type CardTokenRequest = {

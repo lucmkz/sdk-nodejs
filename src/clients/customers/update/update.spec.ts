@@ -32,11 +32,11 @@ describe('Testing customer, update', () => {
 			description: 'Description del user',
 			default_card: 'None'
 		};
-
-		await update({ customerId: '123', body, config: client });
+		const requestOptions = {};
+		await update({ customerId: '123', body, config: client, requestOptions });
 
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
-		expect(spyFetch).toHaveBeenCalledWith( '/v1/customers/123', { 
+		expect(spyFetch).toHaveBeenCalledWith( '/v1/customers/123', {
 			'body': JSON.stringify(body),
 			'headers': { 'Authorization': 'Bearer token' }, 'method': 'PUT', 'timeout': 5000 });
 	});

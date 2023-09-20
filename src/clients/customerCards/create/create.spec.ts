@@ -11,8 +11,8 @@ describe('Testing customer cards, create', () => {
 		const body = {
 			token : '123',
 		};
-
-		await create({ customerId:'123', body: body, config: client });
+		const requestOptions = {};
+		await create({ customerId:'123', body: body, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith('/v1/customers/123/cards', { 'body': '{"token":"123"}', 'headers': { 'Authorization': 'Bearer token' }, 'method': 'POST', 'timeout': 5000 });
 	});

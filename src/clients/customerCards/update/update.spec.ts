@@ -17,8 +17,8 @@ describe('Testing customer cards, update', () => {
 				}
 			}
 		};
-
-		await update({ customerId: '123', cardId: '123', body: body, config: client });
+		const requestOptions = {};
+		await update({ customerId: '123', cardId: '123', body: body, config: client, requestOptions });
 
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith( '/v1/customers/123/cards/123', { 'body': '{"cardholder":{"name":"CONT","identification":{"number":"1111","type":"CPF"}}}',

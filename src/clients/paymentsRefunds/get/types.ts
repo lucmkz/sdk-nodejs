@@ -7,7 +7,7 @@ export declare type GetRefund = {
 };
 
 export declare type Get = {
-  requestOptions: Options;
+  requestOptions?: Options;
   payment_id: string;
   refund_id: string;
   config: MercadoPagoConfig;

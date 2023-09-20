@@ -17,8 +17,8 @@ describe('Testing preference, create', () => {
 			'Authorization': 'Bearer token',
 			'Content-Type': 'application/json',
 		};
-
-		await create({ preferenceRequest, config : client });
+		const requestOptions = {};
+		await create({ preferenceRequest, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			'/checkout/preferences/',

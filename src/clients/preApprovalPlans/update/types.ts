@@ -7,7 +7,7 @@ export declare type PreApprovalPlanId = {
 };
 
 export declare type UpdatePreApprovalPlan = {
-  requestOptions: Options;
+  requestOptions?: Options;
   id: string;
   updatePreApprovalPlanRequest: PreApprovalPlanRequest;
   config: MercadoPagoConfig

@@ -8,7 +8,8 @@ describe('Testing create get', () => {
 	test('shoud pass foward request options from get to RestClient.get', async () => {
 		const client = new MercadoPagoConfig({ accessToken: 'token', options: { timeout: 5000 } });
 		const mockId = '00000000';
-		await get({ id: mockId, config: client });
+		const requestOptions = {};
+		await get({ id: mockId, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(`/v1/payments/${mockId}`, {
 			headers: { Authorization: 'Bearer token', 'Content-Type': 'application/json' },

@@ -1,10 +1,12 @@
 import { RestClient } from '@utils/restClient';
+import { mergeOptions } from '@src/utils/mergeOptions';
+
 import type { Customer } from '../commonTypes';
 import type { CustomerUpdateRequest } from './types';
 import type { Options } from '@src/types';
 
 export default function update({ customerId, body, config, requestOptions }: CustomerUpdateRequest): Promise<Customer> {
-	const options: Options = Object.assign(config.options, requestOptions);
+	const options: Options = mergeOptions(config.options, requestOptions);
 	return RestClient.fetch<Customer>(
 		`/v1/customers/${customerId}`,
 		{

@@ -16,9 +16,11 @@ describe('Testing create payments', () => {
 			},
 			transaction_amount: 12.34,
 		};
+		const requestOptions = {};
 		const mockCreate: Create = {
 			body: mockBody,
-			config: client
+			config: client,
+			requestOptions
 		};
 		await create(mockCreate);
 		const spyFetch = jest.spyOn(RestClient, 'fetch');

@@ -1,11 +1,11 @@
 import { RestClient } from '@utils/restClient';
+import { mergeOptions } from '@src/utils/mergeOptions';
 
 import type { PaymentsResponse } from '../commonTypes';
 import type { PaymentCancelRequest } from './types';
-import { Options } from '@src/types';
 
 export default function cancel({ id, config, requestOptions }: PaymentCancelRequest): Promise<PaymentsResponse>  {
-	const options: Options = Object.assign(config.options, requestOptions);
+	const options = mergeOptions(config.options, requestOptions);
 	const cancelBody = {
 		status: 'cancelled'
 	};

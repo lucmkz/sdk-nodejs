@@ -7,5 +7,5 @@ export declare type PaymentGetRequestBody = {
 
 export declare interface PaymentGetRequest extends PaymentGetRequestBody {
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 }

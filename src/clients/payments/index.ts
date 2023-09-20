@@ -57,7 +57,7 @@ export class Payments {
    *
    * @see {@link https://github.com/mercadopago/sdk-nodejs/blob/master/src/examples/src/payments/create.ts Usage Example  }.
    */
-	create(body: PaymentsCreateRequest, requestOptions?: Options): Promise<PaymentsResponse> {
+	create(body: PaymentsCreateRequest, requestOptions: Options): Promise<PaymentsResponse> {
 		return create({ body, config: this.config, requestOptions });
 	}
 

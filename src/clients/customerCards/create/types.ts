@@ -5,7 +5,7 @@ export declare type CustomerCard = {
   customerId: string;
   body: CustomerCardBody;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type CustomerCardBody = {

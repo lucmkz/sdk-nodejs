@@ -13,7 +13,8 @@ describe('Testing card tokens, create', () => {
 			security_code : '123'
 		};
 
-		await create({ body: body, config: client });
+		const requestOptions = {};
+		await create({ body: body, config: client, requestOptions });
 
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith('/v1/card_tokens', { 'headers': { 'Authorization': 'Bearer token' },

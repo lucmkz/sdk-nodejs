@@ -16,8 +16,8 @@ describe('Testing payment intent, cancel', () => {
 		const expectedHeaders = {
 			Authorization: 'Bearer token',
 		};
-
-		await cancelPaymentIntent({ device_id, payment_intent_id, config: client });
+		const requestOptions = {};
+		await cancelPaymentIntent({ device_id, payment_intent_id, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			'/point/integration-api/devices/GERTEC_MP123__12345678/payment-intents/123456789',

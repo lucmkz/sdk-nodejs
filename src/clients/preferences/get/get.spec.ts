@@ -12,8 +12,8 @@ describe('Testing preference, get', () => {
 		const expectedHeaders = {
 			'Authorization': 'Bearer token'
 		};
-
-		await get({ id, config : client });
+		const requestOptions = {};
+		await get({ id, config : client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			`/checkout/preferences/${id}`,

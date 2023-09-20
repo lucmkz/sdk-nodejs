@@ -8,9 +8,11 @@ jest.mock('@utils/restClient');
 describe('Testing payments refunds, list', () => {
 	test('should include the payment_id in the path of the url ', async () => {
 		const client = new MercadoPagoConfig({ accessToken: 'token', options: { timeout: 5000 } });
+		const requestOptions = {};
 		const request: GetRefundByPaymentId = {
 			payment_id: '123',
 			config: client,
+			requestOptions
 		};
 
 		const expectedHeaders = {

@@ -6,7 +6,7 @@ import type { Options } from '@src/types';
 export declare type CustomerSearchRequest = {
   filters?: CustomerSearchOptions;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type CustomerSearchOptions = {

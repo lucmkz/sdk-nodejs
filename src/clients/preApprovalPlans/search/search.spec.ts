@@ -11,7 +11,8 @@ describe('Testing pre approval plan, search', () => {
 			'Authorization': 'Bearer token',
 			'Content-Type': 'application/json',
 		};
-		await search({ config: client });
+		const requestOptions = {};
+		await search({ config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
 		expect(spyFetch).toHaveBeenCalledWith(
 			'/preapproval_plan/search',

@@ -5,5 +5,5 @@ import type { Options } from '@src/types';
 export declare type CreatePreApprovalPlanRequest = {
   preApprovalPlanRequest: PreApprovalPlanRequest;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };

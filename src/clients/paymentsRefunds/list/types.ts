@@ -8,5 +8,5 @@ export declare type GetRefundList = {
 export declare type GetRefundByPaymentId = {
   payment_id: string;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };

@@ -1,10 +1,12 @@
 import { RestClient } from '@utils/restClient';
+import { mergeOptions } from '@src/utils/mergeOptions';
+
 import type { CardTokenResponse } from '../get/types';
 import type { CardTokenCreate } from './types';
 import type { Options } from '@src/types';
 
 export default function create({ body, config, requestOptions }: CardTokenCreate): Promise<CardTokenResponse> {
-	const options: Options = Object.assign(config.options, requestOptions);
+	const options: Options = mergeOptions(config.options, requestOptions);
 	return RestClient.fetch<CardTokenResponse>(
 		'/v1/card_tokens',
 		{

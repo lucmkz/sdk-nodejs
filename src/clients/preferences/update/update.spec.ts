@@ -8,12 +8,14 @@ jest.mock('@utils/restClient');
 describe('Testing preference, update', () => {
 	test('should make a PUT request with the correct parameters', async () => {
 		const client = new MercadoPagoConfig({ accessToken: 'token' });
+		const requestOptions = {};
 		const preferenceRequest: UpdatePreference = {
 			id: '1234',
 			updatePreferenceRequest: {
 				items: [],
 			},
 			config: client,
+			requestOptions
 		};
 		const expectedHeaders = {
 			'Authorization': 'Bearer token',

@@ -32,12 +32,12 @@ describe('Testing customer, create', () => {
 			description: 'Description del user',
 			default_card: 'None'
 		};
-
-		await create({ body, config: client });
+		const requestOptions = {};
+		await create({ body, config: client, requestOptions });
 		const spyFetch = jest.spyOn(RestClient, 'fetch');
-		expect(spyFetch).toHaveBeenCalledWith('/v1/customers', { 
-			'body': JSON.stringify(body), 
-			'headers': { 'Authorization': 'Bearer token' }, 
+		expect(spyFetch).toHaveBeenCalledWith('/v1/customers', {
+			'body': JSON.stringify(body),
+			'headers': { 'Authorization': 'Bearer token' },
 			'method': 'POST', 'timeout': 5000 });
 	});
 });

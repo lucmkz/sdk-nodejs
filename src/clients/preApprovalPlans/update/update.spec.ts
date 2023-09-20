@@ -8,6 +8,7 @@ jest.mock('@utils/restClient');
 describe('Testing pre approval plan, update', () => {
 	test('should make a PUT request with the correct parameters', async () => {
 		const client = new MercadoPagoConfig({ accessToken: 'token' });
+		const requestOptions = {};
 		const preApprovalPlan: UpdatePreApprovalPlan = {
 			id: '1234',
 			updatePreApprovalPlanRequest: {
@@ -21,6 +22,7 @@ describe('Testing pre approval plan, update', () => {
 				}
 			},
 			config: client,
+			requestOptions
 		};
 		const expectedHeaders = {
 			'Authorization': 'Bearer token',

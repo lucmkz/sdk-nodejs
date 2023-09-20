@@ -6,6 +6,6 @@ export declare type PaymentCancelRequestBody = {
 }
 
 export declare interface PaymentCancelRequest extends PaymentCancelRequestBody {
-  requestOptions: Options;
+  requestOptions?: Options;
   config: MercadoPagoConfig;
 }

@@ -3,7 +3,7 @@ import { Options } from '@src/types';
 
 export declare type PaymentMethodGet = {
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type PaymentMethodResponse = {

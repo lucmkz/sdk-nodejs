@@ -4,7 +4,7 @@ import type { Options } from '@src/types';
 export declare type Search = {
   filters?: GetDevicesSearch;
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type GetDevicesRequest = {

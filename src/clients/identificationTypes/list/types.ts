@@ -3,7 +3,7 @@ import type { Options } from '@src/types';
 
 export declare type IdentificationTypeGet = {
   config: MercadoPagoConfig;
-  requestOptions: Options;
+  requestOptions?: Options;
 };
 
 export declare type IdentificationTypeResponse = {
