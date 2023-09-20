@@ -31,7 +31,7 @@ describe('RestClient', () => {
 		});
 	});
 
-	test('Should set Idempotency-Key header when method is not GET if it is received', async () => {
+	test('Should set X-Idempotency-Key header when method is not GET if it is received', async () => {
 		(fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
 			new Response(JSON.stringify({ success: true }), { url: 'url', status: 200, statusText: 'OK' })
 		);
@@ -42,7 +42,7 @@ describe('RestClient', () => {
 		expect(fetch).toHaveBeenCalledWith(expect.any(String), {
 			method: 'POST',
 			headers: {
-				'Idempotency-Key': idempotencyKey,
+				'X-Idempotency-Key': idempotencyKey,
 			},
 			timeout: expect.any(Number),
 		});
@@ -141,7 +141,7 @@ describe('RestClient', () => {
 		});
 	});
 
-	test('Should generate Idempotency-Key header if not provided', async () => {
+	test('Should generate X-Idempotency-Key header if not provided', async () => {
 		(fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
 			new Response(JSON.stringify({ success: true }), { url: 'url', status: 200, statusText: 'OK' })
 		);
@@ -152,7 +152,7 @@ describe('RestClient', () => {
 		expect(fetch).toHaveBeenCalledWith(expect.any(String), {
 			method: 'POST',
 			headers: {
-				'Idempotency-Key': expect.any(String),
+				'X-Idempotency-Key': expect.any(String),
 			},
 			timeout: expect.any(Number),
 		});

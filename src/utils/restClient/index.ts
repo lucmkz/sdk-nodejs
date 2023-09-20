@@ -75,7 +75,7 @@ class RestClient {
 		if (method && method !== 'GET') {
 			customConfig.headers = {
 				...(customConfig.headers || {}),
-				'Idempotency-Key': idempotencyKey,
+				'X-Idempotency-Key': idempotencyKey,
 			};
 		}
 
