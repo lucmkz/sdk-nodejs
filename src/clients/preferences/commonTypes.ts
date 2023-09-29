@@ -55,12 +55,6 @@ export declare type BackUrls = {
   failure?: string;
 };
 
-export declare type RedirectUrls = {
-  success?: string;
-  failure?: string;
-  pending?: string;
-};
-
 export declare type Tax = {
   type?: string;
   value?: number;
@@ -72,8 +66,6 @@ export declare type PreferenceRequest = {
   auto_return?: string;
   back_urls?: BackUrls;
   binary_mode?: boolean;
-  coupon_code?: string;
-  coupon_labels?: Array<string>;
   date_of_expiration?: string;
   differential_pricing?: DifferentialPricing;
   expiration_date_from?: string;
@@ -90,7 +82,6 @@ export declare type PreferenceRequest = {
   payment_methods?: PaymentMethods;
   processing_modes?: Array<string>;
   purpose?: string;
-  redirect_urls?: RedirectUrls;
   shipments?: Shipments;
   statement_descriptor?: string;
   taxes?: Array<Tax>;
@@ -104,8 +95,6 @@ export declare interface PreferenceResponse extends ApiResponse {
   binary_mode?: boolean;
   client_id?: string;
   collector_id?: number;
-  coupon_code?: string;
-  coupon_labels?: Array<string>;
   date_created?: string;
   date_of_expiration?: string;
   differential_pricing?: DifferentialPricing;
@@ -126,7 +115,6 @@ export declare interface PreferenceResponse extends ApiResponse {
   payment_methods?: PaymentMethods;
   processing_modes?: Array<string>;
   purpose?: string;
-  redirect_urls?: RedirectUrls;
   sandbox_init_point?: string;
   site_id?: string;
   shipments?: Shipments;
