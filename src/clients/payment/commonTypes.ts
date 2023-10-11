@@ -67,7 +67,7 @@ export declare type PayerAdditionalInfo = {
   registration_date?: string;
 };
 
-export declare type ShipmentsPayments = {
+export declare type ShipmentsPayment = {
   receiver_address?: ShipmentsReceiverAddress;
 };
 
@@ -82,7 +82,7 @@ export declare type AdditionalInfo = {
   ip_address?: string;
   items?: Array<Items>;
   payer?: PayerAdditionalInfo;
-  shipments?: ShipmentsPayments;
+  shipments?: ShipmentsPayment;
 };
 
 export declare type TransactionDetails = {
@@ -177,7 +177,7 @@ export declare type TransactionData = {
   transaction_id?: string;
   bank_transfer_id?: number;
   financial_institution?: number;
-  bankInfo?: BankInfo;
+  bank_info?: BankInfo;
   ticket_url?: string;
 };
 
@@ -200,7 +200,7 @@ export declare type ThreeDSInfo = {
   creq?: string;
 };
 
-export declare interface PaymentsResponse extends ApiResponse {
+export declare interface PaymentResponse extends ApiResponse {
   id?: number;
   date_created?: string;
   date_approved?: string;
